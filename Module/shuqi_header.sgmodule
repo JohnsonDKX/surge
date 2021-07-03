@@ -11,3 +11,4 @@ hostname = %INSERT% render.shuqireader.com,ocean.shuqireader.com,jcollection.shu
 书旗小说获取header = type=https:\/\/ocean\.shuqireader\.com\/*,script-path=https://raw.githubusercontent.com/JohnsonDKX/xscripts/master/Task/shuqi.js
 #极速版书城
 书旗小说获取header = type=http:\/\/activity-center-web\.shuqireader\.com\/*,script-path=https://raw.githubusercontent.com/JohnsonDKX/xscripts/master/Task/shuqi.js
+
