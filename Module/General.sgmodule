@@ -1,0 +1,107 @@
+#!name=General Setting
+#!desc=General for ios
+
+[General]
+# 通用设置
+
+# > TLS 引擎
+tls-provider = openssl
+
+# > 自定义 GeoIP 数据库
+geoip-maxmind-url = https://raw.githubusercontent.com/JMVoid/ipip2mmdb/release/Country.mmdb
+
+# > IPv6 支持（默认关闭）
+ipv6 = false
+
+# > 允许 Wi-Fi 访问 (仅 iOS，若允许远程访问将「false」改为「true」)
+allow-wifi-access = false
+wifi-access-http-port = 6152
+wifi-access-socks5-port = 6153
+# > 允许 Wi-Fi 访问 (仅 macOS，若允许远程访问将「127.0.0.1」改为「0.0.0.0」)
+http-listen = 127.0.0.1:6152
+socks5-listen = 127.0.0.1:6153
+
+# > 兼容模式 (仅 iOS)
+# compatibility-mode = 0
+# > 跳过代理
+skip-proxy = 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, localhost, *.local, passenger.t3go.cn
+# > 排除简单主机名
+exclude-simple-hostnames = true
+
+# > DNS 服务器
+dns-server = 1.0.0.1,8.8.8.8,system
+# > 从 /etc/hosts 读取 DNS 记录
+read-etc-hosts = true
+
+# 高级设置
+
+# > 日志级别
+loglevel = notify
+
+# > 当遇到 REJECT 策略时返回错误页
+show-error-page-for-reject = true
+
+# > Always Real IP Hosts
+always-real-ip = msftconnecttest.com, msftncsi.com, *.msftconnecttest.com, *.msftncsi.com, *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com
+
+[Replica]
+hide-apple-request = 0
+hide-crash-reporter-request = 1
+hide-udp = 0
+
+[Rule]
+AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
+# Client
+PROCESS-NAME,UUBooster,🌐Direct
+# > Download
+PROCESS-NAME,aria2c,🌐Direct
+PROCESS-NAME,fdm,🌐Direct
+PROCESS-NAME,Folx,🌐Direct
+PROCESS-NAME,NetTransport,🌐Direct
+PROCESS-NAME,Thunder,🌐Direct
+PROCESS-NAME,Transmission,🌐Direct
+PROCESS-NAME,uTorrent,🌐Direct
+PROCESS-NAME,WebTorrent,🌐Direct
+PROCESS-NAME,WebTorrent Helper,🌐Direct
+# Unbreak 后续规则修正
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Unbreak.list,🌐Direct
+# Advertising 广告
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Advertising.list,🛡Guard
+DOMAIN-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/AdvertisingPlus.list,🛡Guard
+# Privacy 隐私
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Privacy.list,🛡Guard
+# Hijacking 运营商劫持或恶意网站
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Hijacking.list,🛡Guard
+# 自定义规则
+# Customize
+RULE-SET,https://raw.githubusercontent.com/JohnsonDKX/surge/dev/Ruleset/Customize.list,zus
+# Home
+RULE-SET,https://raw.githubusercontent.com/JohnsonDKX/surge/dev/Ruleset/Home.list,Home
+# Twitch
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Live/Twitch.list,🎞Twitch
+# TikTok
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/TikTok/TikTok.list,🎞TikTok
+# Youtube
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list,🎞Youtube
+# PayPal
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/PayPal/PayPal.list,PayPal
+# Bilibili港澳台
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBili/BiliBili.list,🎞BiliBili
+# Prime-Video
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AmazonPrimeVideo/AmazonPrimeVideo.list,🎞Prime-Video
+# Netflix
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Netflix/Netflix.list,🎞Netflix
+# 通用规则
+# Streaming 国际流媒体服务
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Streaming.list,zus
+# StreamingSE 中国流媒体服务（面向海外版本）
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/StreamingSE.list,🌐Direct
+# Global 全球加速
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Global.list,🌑Proxy
+# China 中国直连
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/China.list,🌐Direct
+# Local Area Network 局域网
+RULE-SET,LAN,🌐Direct
+# GeoIP China
+GEOIP,CN,🌐Direct
+FINAL,🧭Final,dns-failed
