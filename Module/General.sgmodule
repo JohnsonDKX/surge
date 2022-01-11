@@ -5,6 +5,7 @@
 AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
 # 自定义
 DOMAIN,mallapi.qinlinkeji.com,⛔️Reject
+DOMAIN,mall-dsp.qinlinkeji.com,⛔️Reject
 # Client
 PROCESS-NAME,UUBooster,🌐Direct
 # > Download
