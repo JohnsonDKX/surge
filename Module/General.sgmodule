@@ -61,3 +61,4 @@ RULE-SET,LAN,🌐Direct
 # GeoIP China
 GEOIP,CN,🌐Direct
 FINAL,🧭Final,dns-failed
+
