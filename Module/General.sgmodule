@@ -3,6 +3,8 @@
 
 [Rule]
 AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
+# 自定义
+DOMAIN-SUFFIX,qinlinkeji.com,⛔️Reject
 # Client
 PROCESS-NAME,UUBooster,🌐Direct
 # > Download
